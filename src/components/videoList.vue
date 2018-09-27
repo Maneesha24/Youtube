@@ -1,0 +1,33 @@
+<style lang="css" scoped>
+
+ul {
+    list-style: none;
+}
+
+</style>
+
+<template lang="html">
+
+<ul class="list-group col-md-4">
+    <VideoListItem v-for="video in videos" :video="video" :key="video.etag" @videoSelect="onVideoSelect" />
+</ul>
+
+</template>
+
+<script>
+
+import VideoListItem from "./videoListItem.vue";
+export default {
+    name: "VideoList",
+    components: {
+        VideoListItem
+    },
+    props: ["videos"],
+    methods: {
+        onVideoSelect(video) {
+            this.$emit("videoSelect", video);
+        }
+    }
+};
+
+</script>
